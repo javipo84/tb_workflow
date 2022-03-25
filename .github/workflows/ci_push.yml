@@ -27,7 +27,7 @@ jobs:
     #    TOKEN: ${{ secrets.tb_token }}
 
     - name: push-project
-      run: tb push --push-deps --force --fixtures
+      run: tb push --push-deps --force --fixtures --no-check
       env:
         TB_TOKEN: ${{ secrets.tb_token }}
 
@@ -56,6 +56,6 @@ jobs:
         TB_TOKEN: ${{ secrets.tb_pro_token }}
 
     - name: deploy
-      run: tb push --push-deps --yes --force --fixtures
+      run: tb push --push-deps --yes --force --fixtures --no-check
       env:
         TB_TOKEN: ${{ secrets.tb_pro_token }}

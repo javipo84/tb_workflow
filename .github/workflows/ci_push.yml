@@ -29,10 +29,10 @@ jobs:
       env:
         TB_TOKEN: ${{ secrets.tb_token }}
 
-    #- name: tests
-    #  run: python -m unittest tests/*.py
-    #  env:
-    #    TB_TOKEN: ${{ secrets.tb_token }}
+    - name: tests
+      run: python test.py
+      env:
+        TB_TOKEN: ${{ secrets.tb_token }}
 
   tinybird_deploy:
     runs-on: ubuntu-latest

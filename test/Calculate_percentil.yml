@@ -1,0 +1,9 @@
+type: endpoint
+
+name: Calculate_percentil
+
+tests:
+  - name: test_1
+    asserts:
+      - time: 1200
+      - data: "[{'Total': 9992}]"

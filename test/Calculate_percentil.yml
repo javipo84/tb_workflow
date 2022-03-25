@@ -6,4 +6,4 @@ tests:
   - name: test_1
     asserts:
       - time: 1200
-      - data: "[{'Total': 9992}]"
+      - data: "[{'Total': 9993}]"

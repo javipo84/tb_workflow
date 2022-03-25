@@ -1,6 +1,7 @@
 from datetime import datetime
 import glob
 import os
+import sys
 from time import sleep
 import requests
 import json
@@ -51,4 +52,7 @@ for x in folders:
                     suite.addTest(unittest.FunctionTestCase(data_test(data,data_result)))
 
                 #unittest.TestCase.assertLessEqual(time,1200)
-            unittest.TextTestRunner().run(suite)
+            runner = unittest.TextTestRunner(sys.stdout, verbosity=2)
+            result = runner.run(suite)
+            if not result.wasSuccessful():
+                raise Exception("multiple errors occurred")    

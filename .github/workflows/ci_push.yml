@@ -14,8 +14,9 @@ jobs:
         architecture: 'x64'
 
     - name: pip packages
-      run: pip install tinybird-cli
-      run: pip install PyYAML
+      run: | 
+        pip install tinybird-cli
+        pip install PyYAML
 
     - name: version
       run: tb --version

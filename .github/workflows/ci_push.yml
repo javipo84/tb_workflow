@@ -15,6 +15,7 @@ jobs:
 
     - name: pip packages
       run: pip install tinybird-cli
+      run: pip install PyYAML
 
     - name: version
       run: tb --version

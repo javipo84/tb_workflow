@@ -7,3 +7,4 @@ tests:
     asserts:
       - time: 1200
       - data: "[{'Total': 9993}]"
+      - order: random

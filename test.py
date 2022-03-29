@@ -3,9 +3,9 @@ import glob
 import os
 import sys
 from time import sleep
+from typing_extensions import assert_type
 import requests
 import json
-import logging
 import yaml
 from yaml.loader import SafeLoader
 import unittest
@@ -22,6 +22,7 @@ def data_test(data_expected,data):
     return test
 
 token = os.getenv('TB_TOKEN')
+
 folders = ['./test/*']
 filenames = []
 for x in folders:
@@ -41,15 +42,16 @@ for x in folders:
                             time = doc
                         elif(item == "data"):
                             data = doc
-                response = requests.get (f"https://api.tinybird.co/v0/pipes/{name}.json?token={token}")
-                json = response.json()
-                data_result = str(json["data"])
-                statistics = json["statistics"]
-                elapsed_time = statistics["elapsed"]
-                if(time is not None):
-                    suite.addTest(unittest.FunctionTestCase(time_test(time,elapsed_time)))
-                if(data is not None):
-                    suite.addTest(unittest.FunctionTestCase(data_test(data,data_result)))
+                response = requests.get(f"https://api.tinybird.co/v0/pipes/{name}.json?token={token}")
+                if(response.status_code == 200):
+                    json = response.json()
+                    data_result = str(json["data"])
+                    statistics = json["statistics"]
+                    elapsed_time = statistics["elapsed"]
+                    if(time is not None):
+                        suite.addTest(unittest.FunctionTestCase(time_test(time,elapsed_time),description=f'{type}  {name} - test: {name_test} (Time) '))
+                    if(data is not None):
+                        suite.addTest(unittest.FunctionTestCase(data_test(data,data_result),description=f'{type}  {name} - test: {name_test} (Data) '))
 
                 #unittest.TestCase.assertLessEqual(time,1200)
             runner = unittest.TextTestRunner(sys.stdout, verbosity=2)

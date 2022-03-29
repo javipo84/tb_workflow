@@ -24,7 +24,7 @@ jobs:
       run: tb --version
 
     - name: diff
-      run: /usr/bin/git version
+      run: /usr/bin/git diff --name-only test_git_diff origin/main
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh

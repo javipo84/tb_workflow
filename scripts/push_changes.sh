@@ -8,4 +8,5 @@ for file in $(git diff --name-only); do \
     then
         tb push $file --force --fixtures --no-check
     fi
+echo "end"
 done

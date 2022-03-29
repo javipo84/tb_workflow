@@ -37,7 +37,7 @@ jobs:
           fi
           done
       env:
-      TB_TOKEN: ${{ secrets.tb_token }} 
+        TB_TOKEN: ${{ secrets.tb_token }} 
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh

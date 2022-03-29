@@ -6,5 +6,5 @@ tests:
   - name: test_1
     asserts:
       - time: 1200
-      - data: "[{'Total': 9999}]"
+      - data: "[{'Total': 10000}]"
       - order: random

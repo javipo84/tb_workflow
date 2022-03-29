@@ -23,6 +23,9 @@ jobs:
     - name: version
       run: tb --version
 
+    - name: diff
+      run: git diff --name-only
+
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh
     #  env:

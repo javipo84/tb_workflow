@@ -25,7 +25,7 @@ jobs:
 
     - name: diff
       run: |
-        git diff --name-only main
+        git diff --name-only
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh

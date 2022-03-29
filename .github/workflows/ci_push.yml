@@ -27,10 +27,7 @@ jobs:
       run: |
           git fetch origin ${{ github.event.before }} --depth=1
           export DIFF=$( git diff --name-only ${{ github.event.before }} $GITHUB_SHA )
-          echo "Diff between ${{ github.event.before }} and $GITHUB_SHA"
-          echo "$DIFF"
           for file in $DIFF; do \
-          echo $file;
           if [[ $file == *.pipe ]]
           then
               tb push $file --force --fixtures --no-check

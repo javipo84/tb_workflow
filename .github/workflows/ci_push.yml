@@ -29,16 +29,25 @@ jobs:
           export DIFF=$( git diff --name-only ${{ github.event.before }} $GITHUB_SHA )
           echo "Diff between ${{ github.event.before }} and $GITHUB_SHA"
           echo "$DIFF"
+          for file in $(git diff --name-only); do \
+          echo $file;
+          if [[ $file == *.pipe ]]
+          then
+              tb push $file --force --fixtures --no-check
+          fi
+          done
+      env:
+      TB_TOKEN: ${{ secrets.tb_token }} 
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh
     #  env:
     #    TOKEN: ${{ secrets.tb_token }}
 
-    - name: push_changes
-      run: bash -eux ./scripts/push_changes.sh
-      env:
-        TB_TOKEN: ${{ secrets.tb_token }}    
+    #- name: push_changes
+    #  run: bash -eux ./scripts/push_changes.sh
+    #  env:
+    #    TB_TOKEN: ${{ secrets.tb_token }}    
 
     #- name: push-project
     #  run: tb push --push-deps --force --fixtures --no-check

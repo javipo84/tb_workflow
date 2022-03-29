@@ -36,7 +36,7 @@ jobs:
     #    TOKEN: ${{ secrets.tb_token }}
 
     - name: push_changes
-      run: bash -eux  .githib/scripts/push_changes.sh
+      run: bash -eux ./scripts/push_changes.sh
       env:
         TB_TOKEN: ${{ secrets.tb_token }}    
 

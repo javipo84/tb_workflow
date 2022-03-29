@@ -2,14 +2,14 @@ name: tinybird
 
 on:
   push:
-    branches:
-      - '!master'
+    branches-ignore:
+      - master
 
 jobs:
   run_tests_tinybird:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - uses: actions/setup-python@v1
       with:
         python-version: '3.7'
@@ -28,10 +28,10 @@ jobs:
     #  env:
     #    TOKEN: ${{ secrets.tb_token }}
 
-    - name: push_changes
-      run: ./scripts/push_changes.sh
-      env:
-        TB_TOKEN: ${{ secrets.tb_token }}    
+    #- name: drop-prev-resources
+    #  run: ./scripts/drop_all.sh
+    #  env:
+    #    TOKEN: ${{ secrets.tb_token }}    
 
     - name: push-project
       run: tb push --push-deps --force --fixtures --no-check

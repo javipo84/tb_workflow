@@ -9,7 +9,7 @@ jobs:
   run_tests_tinybird:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@master
     - uses: actions/setup-python@v2
       with:
         python-version: '3.7'
@@ -24,7 +24,7 @@ jobs:
       run: tb --version
 
     - name: diff
-      run: git diff --name-only
+      run: /usr/bin/git diff --name-only
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh

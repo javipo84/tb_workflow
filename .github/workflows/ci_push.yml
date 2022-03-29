@@ -24,7 +24,10 @@ jobs:
       run: tb --version
 
     - name: diff
-      run: /usr/bin/git diff --name-only test_git_diff main
+      env:
+        BRANCH: ${{ github.head_ref }}
+      run: |
+        git diff --name-only "$GITHUB_BASE_REF..${BRANCH}"
 
     #- name: drop-prev-resources
     #  run: ./scripts/drop_all.sh

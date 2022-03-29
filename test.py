@@ -3,7 +3,6 @@ import glob
 import os
 import sys
 from time import sleep
-from typing_extensions import assert_type
 import requests
 import json
 import yaml

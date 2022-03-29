@@ -3,7 +3,7 @@ name: tinybird
 on:
   push:
     branches-ignore:
-      - 'mainr'
+      - 'main'
 
 jobs:
   run_tests_tinybird:

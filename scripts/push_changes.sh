@@ -9,4 +9,5 @@ for file in $(git diff --name-only); do \
         echo "hola"
         tb push $file --force --fixtures --no-check
     fi
+echo "hola"
 done

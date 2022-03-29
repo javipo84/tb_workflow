@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: actions/setup-python@v1
+    - uses: actions/setup-python@v2
       with:
         python-version: '3.7'
         architecture: 'x64'
@@ -28,10 +28,10 @@ jobs:
     #  env:
     #    TOKEN: ${{ secrets.tb_token }}
 
-    - name: push_changes
-      run: ./scripts/push_changes.sh
-      env:
-        TB_TOKEN: ${{ secrets.tb_token }}    
+    #- name: push_changes
+    #  run: ./scripts/push_changes.sh
+    #  env:
+    #    TB_TOKEN: ${{ secrets.tb_token }}    
 
     - name: push-project
       run: tb push --push-deps --force --fixtures --no-check

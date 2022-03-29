@@ -6,6 +6,7 @@ for file in $(git diff --name-only); do \
     echo $file;
     if [[ $file == *.pipe ]]
     then
+        echo "hola"
         tb push $file --force --fixtures --no-check
     fi
 done

@@ -3,7 +3,6 @@ name: tinybird
 on:
   push:
     branches:
-      - '*'
       - '!master'
 
 jobs:

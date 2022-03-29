@@ -28,15 +28,15 @@ jobs:
     #  env:
     #    TOKEN: ${{ secrets.tb_token }}
 
-    #- name: drop-prev-resources
-    #  run: ./scripts/drop_all.sh
-    #  env:
-    #    TOKEN: ${{ secrets.tb_token }}    
-
-    - name: push-project
-      run: tb push --push-deps --force --fixtures --no-check
+    - name: push_changes
+      run: ./scripts/push_changes.sh
       env:
-        TB_TOKEN: ${{ secrets.tb_token }}
+        TB_TOKEN: ${{ secrets.tb_token }}    
+
+    #- name: push-project
+    #  run: tb push --push-deps --force --fixtures --no-check
+    #  env:
+    #    TB_TOKEN: ${{ secrets.tb_token }}
 
     - name: tests
       run: python test.py

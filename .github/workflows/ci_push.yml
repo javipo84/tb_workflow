@@ -29,7 +29,7 @@ jobs:
           export DIFF=$( git diff --name-only ${{ github.event.before }} $GITHUB_SHA )
           echo "Diff between ${{ github.event.before }} and $GITHUB_SHA"
           echo "$DIFF"
-          for file in $(git diff --name-only); do \
+          for file in $DIFF; do \
           echo $file;
           if [[ $file == *.pipe ]]
           then
